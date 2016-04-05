@@ -10,6 +10,26 @@
  * email: hendren@cs.mcgill.ca, mis@brics.dk
  */
 
+
+/* 
+
+   ldc_int 6
+   ldc_int 6
+   --------->
+   ldc_int 6
+   dup
+
+   src: https://frippery.org/jopt/opt2.html
+*/
+int simplify_duplicate_intconstants(CODE **c)
+{ int x, y;
+  if (is_ldc_int(*c, &x) &&
+      is_ldc_int(next(*c), &y) && x == y) {
+    return replace(c, 2,makeCODEldc_int(x, makeCODEdup(NULL)));
+  }
+  return 0;
+}
+
 /* iload x        iload x        iload x
  * ldc 0          ldc 1          ldc 2
  * imul           imul           imul
@@ -93,9 +113,10 @@ int simplify_goto_goto(CODE **c)
   return 0;
 }
 
-#define OPTS 4
+#define OPTS 5
 
 OPTI optimization[OPTS] = {simplify_multiplication_right,
                            simplify_astore,
                            positive_increment,
-                           simplify_goto_goto};
+                           simplify_goto_goto,
+                           simplify_duplicate_intconstants};
