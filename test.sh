@@ -23,9 +23,9 @@ fi
 if [[ $1 == "-O" ]]; then
 	awk '{sum += $3} END {print sum}' opt.size >> opt.results
 	echo "opt results: "
-	cat opt.results
+	tail opt.results
 else
 	awk '{sum += $3} END {print sum}' no-opt.size >> no-opt.results
 	echo "no-opt results: "
-	cat no-opt.results
+	tail no-opt.results
 fi

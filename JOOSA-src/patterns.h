@@ -10,7 +10,6 @@
  * email: hendren@cs.mcgill.ca, mis@brics.dk
  */
 
-
 /* 
 
    ldc_int 6
@@ -129,6 +128,59 @@ OPTI optimization[OPTS] = {simplify_multiplication_right,
 * *
 */
 
+/*
+ * iload x
+ * pop
+ * ----->
+ * nothing
+ */
+int simplify_pop_after_load(CODE **c) 
+{
+	int x;
+	if (is_iload(*c, &x) && 
+		is_pop(next(*c)))
+		return replace(c, 2, NULL);
+	return 0;
+}
+
+/*
+ * TODO not so sure about this nop...
+ * nop
+ * ----->
+ * nothing
+ */
+int simplify_nop(CODE **c) 
+{
+  	if (is_nop(*c))
+  		return replace(c, 1, NULL);
+	return 0;
+}
+
+/*
+ * aload_0
+ * getfield test/b Z
+ * iconst_1
+ * if_icmpne l
+ * ---------->
+ *
+ * aload_0
+ * getfield test/b Z
+ * ifne l
+ */
+
+int simplify_equals_true_field(CODE **c)
+{
+	int x, y, l;
+	char *arg;
+
+	if( is_aload(*c, &x) &&
+		is_getfield(next(*c), &arg) && 
+		is_ldc_int(next(next(*c)), &y) && y == 1 &&
+		is_if_icmpeq(next(next(next(*c))), &l) )
+			return replace(c, 4, makeCODEaload(x, makeCODEgetfield(arg, makeCODEifne(l, NULL))));
+	return 0;
+}
+
 int init_patterns()
 { 	
 	ADD_PATTERN(simplify_multiplication_right);
@@ -136,5 +188,32 @@ int init_patterns()
 	ADD_PATTERN(positive_increment);
 	ADD_PATTERN(simplify_goto_goto);
 	ADD_PATTERN(simplify_duplicate_intconstants);
+	ADD_PATTERN(simplify_pop_after_load);
+	ADD_PATTERN(simplify_nop);
+	ADD_PATTERN(simplify_equals_true_field);
 	return 1;
 }
+
+/* 
+ * bipush 9
+ * istore 4
+ * iload 4
+ * istore_1	
+ * -------->
+ * bipush 9
+ * dup
+ * istore 4
+ * istore_1
+ *
+ * source: https://frippery.org/jopt/opt5.html
+ */
+
+/* 
+ * is_bipush() not present 
+int simplify_store_followed_by_fetch(CODE **c)
+{ 
+	return 0;
+}
+*/
+
+
