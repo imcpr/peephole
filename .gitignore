@@ -1,0 +1,7 @@
+*.o
+*~
+*.class
+*.j
+*.optdump
+*.dump
+*.swp

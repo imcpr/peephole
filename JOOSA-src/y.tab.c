@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.0.2.  */
+/* A Bison parser, made by GNU Bison 3.0.4.  */
 
 /* Bison implementation for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "3.0.2"
+#define YYBISON_VERSION "3.0.4"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -246,7 +246,7 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE YYSTYPE;
+
 union YYSTYPE
 {
 #line 26 "joos.y" /* yacc.c:355  */
@@ -271,6 +271,8 @@ union YYSTYPE
 
 #line 273 "y.tab.c" /* yacc.c:355  */
 };
+
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
@@ -284,7 +286,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 288 "y.tab.c" /* yacc.c:358  */
+#line 290 "y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1650,145 +1652,145 @@ yyreduce:
         case 2:
 #line 98 "joos.y" /* yacc.c:1646  */
     {theclassfile = makeCLASSFILE((yyvsp[0].class),NULL);}
-#line 1654 "y.tab.c" /* yacc.c:1646  */
+#line 1656 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
 #line 100 "joos.y" /* yacc.c:1646  */
     {theclassfile = (yyvsp[0].classfile);}
-#line 1660 "y.tab.c" /* yacc.c:1646  */
+#line 1662 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
 #line 109 "joos.y" /* yacc.c:1646  */
     {(yyval.class) = makeCLASS((yyvsp[-6].stringconst),(yyvsp[-5].stringconst),0,NULL,(yyvsp[-8].modifier),(yyvsp[-3].field),(yyvsp[-2].constructor),(yyvsp[-1].method));}
-#line 1666 "y.tab.c" /* yacc.c:1646  */
+#line 1668 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
 #line 113 "joos.y" /* yacc.c:1646  */
     {(yyval.modifier) = noneMod;}
-#line 1672 "y.tab.c" /* yacc.c:1646  */
+#line 1674 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
 #line 115 "joos.y" /* yacc.c:1646  */
     {(yyval.modifier) = finalMod;}
-#line 1678 "y.tab.c" /* yacc.c:1646  */
+#line 1680 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
 #line 117 "joos.y" /* yacc.c:1646  */
     {(yyval.modifier) = abstractMod;}
-#line 1684 "y.tab.c" /* yacc.c:1646  */
+#line 1686 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
 #line 121 "joos.y" /* yacc.c:1646  */
     {(yyval.classfile) = makeCLASSFILE((yyvsp[0].class),NULL);}
-#line 1690 "y.tab.c" /* yacc.c:1646  */
+#line 1692 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
 #line 123 "joos.y" /* yacc.c:1646  */
     {(yyval.classfile) = makeCLASSFILE((yyvsp[0].class),(yyvsp[-1].classfile));}
-#line 1696 "y.tab.c" /* yacc.c:1646  */
+#line 1698 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
 #line 128 "joos.y" /* yacc.c:1646  */
     {(yyval.class) = makeCLASS((yyvsp[-7].stringconst),(yyvsp[-6].stringconst),1,(yyvsp[-4].stringconst),(yyvsp[-9].modifier),NULL,(yyvsp[-2].constructor),(yyvsp[-1].method));}
-#line 1702 "y.tab.c" /* yacc.c:1646  */
+#line 1704 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
 #line 132 "joos.y" /* yacc.c:1646  */
     {(yyval.stringconst) = NULL;}
-#line 1708 "y.tab.c" /* yacc.c:1646  */
+#line 1710 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
 #line 134 "joos.y" /* yacc.c:1646  */
     {(yyval.stringconst) = (yyvsp[0].stringconst);}
-#line 1714 "y.tab.c" /* yacc.c:1646  */
+#line 1716 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
 #line 138 "joos.y" /* yacc.c:1646  */
     {(yyval.type) = makeTYPEref((yyvsp[0].stringconst));}
-#line 1720 "y.tab.c" /* yacc.c:1646  */
+#line 1722 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
 #line 140 "joos.y" /* yacc.c:1646  */
     {(yyval.type) = makeTYPEchar();}
-#line 1726 "y.tab.c" /* yacc.c:1646  */
+#line 1728 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
 #line 142 "joos.y" /* yacc.c:1646  */
     {(yyval.type) = makeTYPEbool();}
-#line 1732 "y.tab.c" /* yacc.c:1646  */
+#line 1734 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
 #line 144 "joos.y" /* yacc.c:1646  */
     {(yyval.type) = makeTYPEint();}
-#line 1738 "y.tab.c" /* yacc.c:1646  */
+#line 1740 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
 #line 148 "joos.y" /* yacc.c:1646  */
     {(yyval.field) = NULL;}
-#line 1744 "y.tab.c" /* yacc.c:1646  */
+#line 1746 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
 #line 150 "joos.y" /* yacc.c:1646  */
     {(yyval.field) = (yyvsp[0].field);}
-#line 1750 "y.tab.c" /* yacc.c:1646  */
+#line 1752 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
 #line 154 "joos.y" /* yacc.c:1646  */
     {(yyval.field) = (yyvsp[0].field);}
-#line 1756 "y.tab.c" /* yacc.c:1646  */
+#line 1758 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
 #line 156 "joos.y" /* yacc.c:1646  */
     {(yyval.field) = appendFIELD((yyvsp[0].field),(yyvsp[-1].field));}
-#line 1762 "y.tab.c" /* yacc.c:1646  */
+#line 1764 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
 #line 160 "joos.y" /* yacc.c:1646  */
     {(yyval.field) = makeFIELDlist((yyvsp[-1].id),(yyvsp[-2].type));}
-#line 1768 "y.tab.c" /* yacc.c:1646  */
+#line 1770 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
 #line 164 "joos.y" /* yacc.c:1646  */
     {(yyval.id) = makeID((yyvsp[0].stringconst),NULL);}
-#line 1774 "y.tab.c" /* yacc.c:1646  */
+#line 1776 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
 #line 166 "joos.y" /* yacc.c:1646  */
     {(yyval.id) = makeID((yyvsp[0].stringconst),(yyvsp[-2].id));}
-#line 1780 "y.tab.c" /* yacc.c:1646  */
+#line 1782 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
 #line 170 "joos.y" /* yacc.c:1646  */
     {(yyval.constructor) = (yyvsp[0].constructor);}
-#line 1786 "y.tab.c" /* yacc.c:1646  */
+#line 1788 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
 #line 172 "joos.y" /* yacc.c:1646  */
     {(yyval.constructor) = (yyvsp[0].constructor); (yyval.constructor)->next = (yyvsp[-1].constructor);}
-#line 1792 "y.tab.c" /* yacc.c:1646  */
+#line 1794 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
@@ -1800,750 +1802,750 @@ yyreduce:
                                     ),
                                     NULL
                     );}
-#line 1804 "y.tab.c" /* yacc.c:1646  */
+#line 1806 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 29:
 #line 187 "joos.y" /* yacc.c:1646  */
     {(yyval.constructor) = (yyvsp[0].constructor);}
-#line 1810 "y.tab.c" /* yacc.c:1646  */
+#line 1812 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
 #line 189 "joos.y" /* yacc.c:1646  */
     {(yyval.constructor) = (yyvsp[0].constructor); (yyval.constructor)->next = (yyvsp[-1].constructor);}
-#line 1816 "y.tab.c" /* yacc.c:1646  */
+#line 1818 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
 #line 193 "joos.y" /* yacc.c:1646  */
     {(yyval.constructor) = makeCONSTRUCTOR((yyvsp[-4].stringconst),(yyvsp[-2].formal),NULL,NULL);}
-#line 1822 "y.tab.c" /* yacc.c:1646  */
+#line 1824 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
 #line 197 "joos.y" /* yacc.c:1646  */
     {(yyval.formal) = NULL;}
-#line 1828 "y.tab.c" /* yacc.c:1646  */
+#line 1830 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
 #line 199 "joos.y" /* yacc.c:1646  */
     {(yyval.formal) = (yyvsp[0].formal);}
-#line 1834 "y.tab.c" /* yacc.c:1646  */
+#line 1836 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
 #line 203 "joos.y" /* yacc.c:1646  */
     {(yyval.formal) = (yyvsp[0].formal);}
-#line 1840 "y.tab.c" /* yacc.c:1646  */
+#line 1842 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
 #line 205 "joos.y" /* yacc.c:1646  */
     {(yyval.formal) = (yyvsp[0].formal); (yyval.formal)->next = (yyvsp[-2].formal);}
-#line 1846 "y.tab.c" /* yacc.c:1646  */
+#line 1848 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
 #line 209 "joos.y" /* yacc.c:1646  */
     {(yyval.formal) = makeFORMAL((yyvsp[0].stringconst),(yyvsp[-1].type),NULL);}
-#line 1852 "y.tab.c" /* yacc.c:1646  */
+#line 1854 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
 #line 213 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = NULL;}
-#line 1858 "y.tab.c" /* yacc.c:1646  */
+#line 1860 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
 #line 215 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = (yyvsp[0].method);}
-#line 1864 "y.tab.c" /* yacc.c:1646  */
+#line 1866 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
 #line 219 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = (yyvsp[0].method);}
-#line 1870 "y.tab.c" /* yacc.c:1646  */
+#line 1872 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
 #line 221 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = (yyvsp[0].method); (yyval.method)->next = (yyvsp[-1].method);}
-#line 1876 "y.tab.c" /* yacc.c:1646  */
+#line 1878 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 41:
 #line 225 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = makeMETHOD((yyvsp[-6].stringconst),(yyvsp[-8].modifier),(yyvsp[-7].type),(yyvsp[-4].formal),(yyvsp[-1].statement),NULL);}
-#line 1882 "y.tab.c" /* yacc.c:1646  */
+#line 1884 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 42:
 #line 227 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = makeMETHOD((yyvsp[-6].stringconst),noneMod,(yyvsp[-7].type),(yyvsp[-4].formal),(yyvsp[-1].statement),NULL);}
-#line 1888 "y.tab.c" /* yacc.c:1646  */
+#line 1890 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 43:
 #line 229 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = makeMETHOD((yyvsp[-4].stringconst),abstractMod,(yyvsp[-5].type),(yyvsp[-2].formal),NULL,NULL);}
-#line 1894 "y.tab.c" /* yacc.c:1646  */
+#line 1896 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 44:
 #line 231 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = makeMETHOD("main",staticMod,makeTYPEvoid(),NULL,(yyvsp[-1].statement),NULL);}
-#line 1900 "y.tab.c" /* yacc.c:1646  */
+#line 1902 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 45:
 #line 235 "joos.y" /* yacc.c:1646  */
     {(yyval.modifier) = finalMod;}
-#line 1906 "y.tab.c" /* yacc.c:1646  */
+#line 1908 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 46:
 #line 237 "joos.y" /* yacc.c:1646  */
     {(yyval.modifier) = synchronizedMod;}
-#line 1912 "y.tab.c" /* yacc.c:1646  */
+#line 1914 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
 #line 241 "joos.y" /* yacc.c:1646  */
     {if (strcmp((yyvsp[-3].stringconst),"String")!=0) yyerror("type String expected");}
-#line 1918 "y.tab.c" /* yacc.c:1646  */
+#line 1920 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
 #line 243 "joos.y" /* yacc.c:1646  */
     {if (strcmp((yyvsp[-3].stringconst),"String")!=0) yyerror("type String expected");}
-#line 1924 "y.tab.c" /* yacc.c:1646  */
+#line 1926 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 49:
 #line 247 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = NULL;}
-#line 1930 "y.tab.c" /* yacc.c:1646  */
+#line 1932 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 50:
 #line 249 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = (yyvsp[0].method);}
-#line 1936 "y.tab.c" /* yacc.c:1646  */
+#line 1938 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 51:
 #line 253 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = (yyvsp[0].method);}
-#line 1942 "y.tab.c" /* yacc.c:1646  */
+#line 1944 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 52:
 #line 255 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = (yyvsp[0].method); (yyval.method)->next = (yyvsp[-1].method);}
-#line 1948 "y.tab.c" /* yacc.c:1646  */
+#line 1950 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 53:
 #line 259 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = makeMETHOD((yyvsp[-4].stringconst),(yyvsp[-6].modifier),(yyvsp[-5].type),(yyvsp[-2].formal),NULL,NULL);}
-#line 1954 "y.tab.c" /* yacc.c:1646  */
+#line 1956 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 54:
 #line 261 "joos.y" /* yacc.c:1646  */
     {(yyval.method) = makeMETHOD((yyvsp[-4].stringconst),noneMod,(yyvsp[-5].type),(yyvsp[-2].formal),NULL,NULL);}
-#line 1960 "y.tab.c" /* yacc.c:1646  */
+#line 1962 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
 #line 265 "joos.y" /* yacc.c:1646  */
     {(yyval.modifier) = finalMod;}
-#line 1966 "y.tab.c" /* yacc.c:1646  */
+#line 1968 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 56:
 #line 267 "joos.y" /* yacc.c:1646  */
     {(yyval.modifier) = abstractMod;}
-#line 1972 "y.tab.c" /* yacc.c:1646  */
+#line 1974 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 57:
 #line 269 "joos.y" /* yacc.c:1646  */
     {(yyval.modifier) = synchronizedMod;}
-#line 1978 "y.tab.c" /* yacc.c:1646  */
+#line 1980 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 58:
 #line 274 "joos.y" /* yacc.c:1646  */
     {(yyval.type) = makeTYPEvoid();}
-#line 1984 "y.tab.c" /* yacc.c:1646  */
+#line 1986 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 59:
 #line 276 "joos.y" /* yacc.c:1646  */
     {(yyval.type) = (yyvsp[0].type);}
-#line 1990 "y.tab.c" /* yacc.c:1646  */
+#line 1992 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 60:
 #line 280 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = NULL;}
-#line 1996 "y.tab.c" /* yacc.c:1646  */
+#line 1998 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 61:
 #line 282 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2002 "y.tab.c" /* yacc.c:1646  */
+#line 2004 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 62:
 #line 286 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2008 "y.tab.c" /* yacc.c:1646  */
+#line 2010 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 63:
 #line 288 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTsequence((yyvsp[-1].statement),(yyvsp[0].statement));}
-#line 2014 "y.tab.c" /* yacc.c:1646  */
+#line 2016 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 64:
 #line 292 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2020 "y.tab.c" /* yacc.c:1646  */
+#line 2022 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 65:
 #line 294 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2026 "y.tab.c" /* yacc.c:1646  */
+#line 2028 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 66:
 #line 296 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2032 "y.tab.c" /* yacc.c:1646  */
+#line 2034 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 67:
 #line 298 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2038 "y.tab.c" /* yacc.c:1646  */
+#line 2040 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 68:
 #line 300 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2044 "y.tab.c" /* yacc.c:1646  */
+#line 2046 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 69:
 #line 302 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2050 "y.tab.c" /* yacc.c:1646  */
+#line 2052 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 70:
 #line 306 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTlocal(makeLOCALlist((yyvsp[-1].id),(yyvsp[-2].type)));}
-#line 2056 "y.tab.c" /* yacc.c:1646  */
+#line 2058 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 71:
 #line 310 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTskip();}
-#line 2062 "y.tab.c" /* yacc.c:1646  */
+#line 2064 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 72:
 #line 312 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTblock((yyvsp[-1].statement));}
-#line 2068 "y.tab.c" /* yacc.c:1646  */
+#line 2070 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 73:
 #line 314 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2074 "y.tab.c" /* yacc.c:1646  */
+#line 2076 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 74:
 #line 316 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2080 "y.tab.c" /* yacc.c:1646  */
+#line 2082 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 75:
 #line 320 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTif((yyvsp[-2].exp),(yyvsp[0].statement));}
-#line 2086 "y.tab.c" /* yacc.c:1646  */
+#line 2088 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 76:
 #line 324 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTifelse((yyvsp[-4].exp),(yyvsp[-2].statement),(yyvsp[0].statement));}
-#line 2092 "y.tab.c" /* yacc.c:1646  */
+#line 2094 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 77:
 #line 328 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2098 "y.tab.c" /* yacc.c:1646  */
+#line 2100 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 78:
 #line 330 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2104 "y.tab.c" /* yacc.c:1646  */
+#line 2106 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 79:
 #line 332 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2110 "y.tab.c" /* yacc.c:1646  */
+#line 2112 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 80:
 #line 334 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = (yyvsp[0].statement);}
-#line 2116 "y.tab.c" /* yacc.c:1646  */
+#line 2118 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 81:
 #line 339 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTifelse((yyvsp[-4].exp),(yyvsp[-2].statement),(yyvsp[0].statement));}
-#line 2122 "y.tab.c" /* yacc.c:1646  */
+#line 2124 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 82:
 #line 343 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTwhile((yyvsp[-2].exp),(yyvsp[0].statement));}
-#line 2128 "y.tab.c" /* yacc.c:1646  */
+#line 2130 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 83:
 #line 347 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTwhile((yyvsp[-2].exp),(yyvsp[0].statement));}
-#line 2134 "y.tab.c" /* yacc.c:1646  */
+#line 2136 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 84:
 #line 359 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTsequence((yyvsp[-6].statement),makeSTATEMENTwhile((yyvsp[-4].exp),makeSTATEMENTsequence((yyvsp[0].statement),(yyvsp[-2].statement))));}
-#line 2140 "y.tab.c" /* yacc.c:1646  */
+#line 2142 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 85:
 #line 364 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTsequence((yyvsp[-6].statement),makeSTATEMENTwhile((yyvsp[-4].exp),makeSTATEMENTsequence((yyvsp[0].statement),(yyvsp[-2].statement))));}
-#line 2146 "y.tab.c" /* yacc.c:1646  */
+#line 2148 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 86:
 #line 368 "joos.y" /* yacc.c:1646  */
     { (yyval.statement) = NULL; }
-#line 2152 "y.tab.c" /* yacc.c:1646  */
+#line 2154 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 87:
 #line 369 "joos.y" /* yacc.c:1646  */
     { (yyval.statement) = (yyvsp[0].statement); }
-#line 2158 "y.tab.c" /* yacc.c:1646  */
+#line 2160 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 88:
 #line 371 "joos.y" /* yacc.c:1646  */
     { (yyval.statement) = makeSTATEMENTexp((yyvsp[0].exp)); }
-#line 2164 "y.tab.c" /* yacc.c:1646  */
+#line 2166 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 89:
 #line 373 "joos.y" /* yacc.c:1646  */
     { (yyval.statement) = makeSTATEMENTsequence((yyvsp[-2].statement), makeSTATEMENTexp((yyvsp[0].exp))); }
-#line 2170 "y.tab.c" /* yacc.c:1646  */
+#line 2172 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 90:
 #line 375 "joos.y" /* yacc.c:1646  */
     { (yyval.exp) = makeEXPboolconst(1); }
-#line 2176 "y.tab.c" /* yacc.c:1646  */
+#line 2178 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 91:
 #line 376 "joos.y" /* yacc.c:1646  */
     { (yyval.exp) = (yyvsp[0].exp); }
-#line 2182 "y.tab.c" /* yacc.c:1646  */
+#line 2184 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 92:
 #line 387 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPassign((yyvsp[-1].stringconst), makeEXPplus(makeEXPid((yyvsp[-1].stringconst)),makeEXPintconst(1))); }
-#line 2188 "y.tab.c" /* yacc.c:1646  */
+#line 2190 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 93:
 #line 396 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTexp((yyvsp[-1].exp));}
-#line 2194 "y.tab.c" /* yacc.c:1646  */
+#line 2196 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 94:
 #line 400 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2200 "y.tab.c" /* yacc.c:1646  */
+#line 2202 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 95:
 #line 402 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2206 "y.tab.c" /* yacc.c:1646  */
+#line 2208 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 96:
 #line 404 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2212 "y.tab.c" /* yacc.c:1646  */
+#line 2214 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 97:
 #line 405 "joos.y" /* yacc.c:1646  */
     { (yyval.exp) = (yyvsp[0].exp); }
-#line 2218 "y.tab.c" /* yacc.c:1646  */
+#line 2220 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 98:
 #line 409 "joos.y" /* yacc.c:1646  */
     {(yyval.statement) = makeSTATEMENTreturn((yyvsp[-1].exp));}
-#line 2224 "y.tab.c" /* yacc.c:1646  */
+#line 2226 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 99:
 #line 413 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = NULL;}
-#line 2230 "y.tab.c" /* yacc.c:1646  */
+#line 2232 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 100:
 #line 415 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2236 "y.tab.c" /* yacc.c:1646  */
+#line 2238 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 101:
 #line 419 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPassign((yyvsp[-2].stringconst),(yyvsp[0].exp));}
-#line 2242 "y.tab.c" /* yacc.c:1646  */
+#line 2244 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 102:
 #line 423 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2248 "y.tab.c" /* yacc.c:1646  */
+#line 2250 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 103:
 #line 425 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2254 "y.tab.c" /* yacc.c:1646  */
+#line 2256 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 104:
 #line 429 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2260 "y.tab.c" /* yacc.c:1646  */
+#line 2262 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 105:
 #line 431 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPor((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2266 "y.tab.c" /* yacc.c:1646  */
+#line 2268 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 106:
 #line 435 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2272 "y.tab.c" /* yacc.c:1646  */
+#line 2274 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 107:
 #line 437 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPand((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2278 "y.tab.c" /* yacc.c:1646  */
+#line 2280 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 108:
 #line 441 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2284 "y.tab.c" /* yacc.c:1646  */
+#line 2286 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 109:
 #line 443 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPeq((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2290 "y.tab.c" /* yacc.c:1646  */
+#line 2292 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 110:
 #line 445 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPneq((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2296 "y.tab.c" /* yacc.c:1646  */
+#line 2298 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 111:
 #line 449 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2302 "y.tab.c" /* yacc.c:1646  */
+#line 2304 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 112:
 #line 451 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPlt((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2308 "y.tab.c" /* yacc.c:1646  */
+#line 2310 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 113:
 #line 453 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPgt((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2314 "y.tab.c" /* yacc.c:1646  */
+#line 2316 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 114:
 #line 455 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPleq((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2320 "y.tab.c" /* yacc.c:1646  */
+#line 2322 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 115:
 #line 457 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPgeq((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2326 "y.tab.c" /* yacc.c:1646  */
+#line 2328 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 116:
 #line 459 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPinstanceof((yyvsp[-2].exp),(yyvsp[0].stringconst));}
-#line 2332 "y.tab.c" /* yacc.c:1646  */
+#line 2334 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 117:
 #line 463 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2338 "y.tab.c" /* yacc.c:1646  */
+#line 2340 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 118:
 #line 465 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPplus((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2344 "y.tab.c" /* yacc.c:1646  */
+#line 2346 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 119:
 #line 467 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPminus((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2350 "y.tab.c" /* yacc.c:1646  */
+#line 2352 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 120:
 #line 473 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2356 "y.tab.c" /* yacc.c:1646  */
+#line 2358 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 121:
 #line 475 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPtimes((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2362 "y.tab.c" /* yacc.c:1646  */
+#line 2364 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 122:
 #line 477 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPdiv((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2368 "y.tab.c" /* yacc.c:1646  */
+#line 2370 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 123:
 #line 479 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPmod((yyvsp[-2].exp),(yyvsp[0].exp));}
-#line 2374 "y.tab.c" /* yacc.c:1646  */
+#line 2376 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 124:
 #line 483 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2380 "y.tab.c" /* yacc.c:1646  */
+#line 2382 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 125:
 #line 485 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPuminus((yyvsp[0].exp));}
-#line 2386 "y.tab.c" /* yacc.c:1646  */
+#line 2388 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 126:
 #line 490 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2392 "y.tab.c" /* yacc.c:1646  */
+#line 2394 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 127:
 #line 492 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPnot((yyvsp[0].exp));}
-#line 2398 "y.tab.c" /* yacc.c:1646  */
+#line 2400 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 128:
 #line 494 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2404 "y.tab.c" /* yacc.c:1646  */
+#line 2406 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 129:
 #line 497 "joos.y" /* yacc.c:1646  */
     {if ((yyvsp[-2].exp)->kind!=idK) yyerror("identifier expected");
                   (yyval.exp) = makeEXPcast((yyvsp[-2].exp)->val.idE.name,(yyvsp[0].exp));}
-#line 2411 "y.tab.c" /* yacc.c:1646  */
+#line 2413 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 130:
 #line 500 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPcharcast((yyvsp[0].exp));}
-#line 2417 "y.tab.c" /* yacc.c:1646  */
+#line 2419 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 131:
 #line 504 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPid((yyvsp[0].stringconst));}
-#line 2423 "y.tab.c" /* yacc.c:1646  */
+#line 2425 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 132:
 #line 506 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2429 "y.tab.c" /* yacc.c:1646  */
+#line 2431 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 133:
 #line 510 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2435 "y.tab.c" /* yacc.c:1646  */
+#line 2437 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 134:
 #line 512 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPthis();}
-#line 2441 "y.tab.c" /* yacc.c:1646  */
+#line 2443 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 135:
 #line 514 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[-1].exp);}
-#line 2447 "y.tab.c" /* yacc.c:1646  */
+#line 2449 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 136:
 #line 516 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2453 "y.tab.c" /* yacc.c:1646  */
+#line 2455 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 137:
 #line 518 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = (yyvsp[0].exp);}
-#line 2459 "y.tab.c" /* yacc.c:1646  */
+#line 2461 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 138:
 #line 522 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPnew((yyvsp[-3].stringconst),(yyvsp[-1].argument));}
-#line 2465 "y.tab.c" /* yacc.c:1646  */
+#line 2467 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 139:
 #line 526 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPinvoke((yyvsp[-5].receiver),(yyvsp[-3].stringconst),(yyvsp[-1].argument));}
-#line 2471 "y.tab.c" /* yacc.c:1646  */
+#line 2473 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 140:
 #line 530 "joos.y" /* yacc.c:1646  */
     {(yyval.receiver) = makeRECEIVERobject(makeEXPid((yyvsp[0].stringconst)));}
-#line 2477 "y.tab.c" /* yacc.c:1646  */
+#line 2479 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 141:
 #line 532 "joos.y" /* yacc.c:1646  */
     {(yyval.receiver) = makeRECEIVERobject((yyvsp[0].exp));}
-#line 2483 "y.tab.c" /* yacc.c:1646  */
+#line 2485 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 142:
 #line 534 "joos.y" /* yacc.c:1646  */
     {(yyval.receiver) = makeRECEIVERsuper();}
-#line 2489 "y.tab.c" /* yacc.c:1646  */
+#line 2491 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 143:
 #line 538 "joos.y" /* yacc.c:1646  */
     {(yyval.argument) = NULL;}
-#line 2495 "y.tab.c" /* yacc.c:1646  */
+#line 2497 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 144:
 #line 540 "joos.y" /* yacc.c:1646  */
     {(yyval.argument) = (yyvsp[0].argument);}
-#line 2501 "y.tab.c" /* yacc.c:1646  */
+#line 2503 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 145:
 #line 544 "joos.y" /* yacc.c:1646  */
     {(yyval.argument) = makeARGUMENT((yyvsp[0].exp),NULL);}
-#line 2507 "y.tab.c" /* yacc.c:1646  */
+#line 2509 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 146:
 #line 546 "joos.y" /* yacc.c:1646  */
     {(yyval.argument) = makeARGUMENT((yyvsp[0].exp),(yyvsp[-2].argument));}
-#line 2513 "y.tab.c" /* yacc.c:1646  */
+#line 2515 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 147:
 #line 550 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPintconst((yyvsp[0].intconst));}
-#line 2519 "y.tab.c" /* yacc.c:1646  */
+#line 2521 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 148:
 #line 552 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPboolconst((yyvsp[0].boolconst));}
-#line 2525 "y.tab.c" /* yacc.c:1646  */
+#line 2527 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 149:
 #line 554 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPcharconst((yyvsp[0].charconst));}
-#line 2531 "y.tab.c" /* yacc.c:1646  */
+#line 2533 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 150:
 #line 556 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPstringconst((yyvsp[0].stringconst));}
-#line 2537 "y.tab.c" /* yacc.c:1646  */
+#line 2539 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 151:
 #line 558 "joos.y" /* yacc.c:1646  */
     {(yyval.exp) = makeEXPnull();}
-#line 2543 "y.tab.c" /* yacc.c:1646  */
+#line 2545 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 2547 "y.tab.c" /* yacc.c:1646  */
+#line 2549 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

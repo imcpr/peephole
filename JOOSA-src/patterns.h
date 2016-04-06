@@ -113,6 +113,10 @@ int simplify_goto_goto(CODE **c)
   return 0;
 }
 
+/*
+ *
+ *  Old style - still works, but better to use new style.
+ *
 #define OPTS 5
 
 OPTI optimization[OPTS] = {simplify_multiplication_right,
@@ -120,3 +124,17 @@ OPTI optimization[OPTS] = {simplify_multiplication_right,
                            positive_increment,
                            simplify_goto_goto,
                            simplify_duplicate_intconstants};
+
+* new style for giving patterns
+* *
+*/
+
+int init_patterns()
+{ 	
+	ADD_PATTERN(simplify_multiplication_right);
+	ADD_PATTERN(simplify_astore);
+	ADD_PATTERN(positive_increment);
+	ADD_PATTERN(simplify_goto_goto);
+	ADD_PATTERN(simplify_duplicate_intconstants);
+	return 1;
+}
