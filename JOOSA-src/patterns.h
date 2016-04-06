@@ -11,6 +11,117 @@
  */
 
 
+/*
+  aload_0
+  getfield Test/x I
+  iconst_1
+  iadd
+  aload_0
+  swap
+  putfield Test/x I
+  ------->
+  aload_0
+  aload_0
+  getfield Test/x I
+  iconst_1
+  iadd
+  putfield Test/x I
+*/ 
+int simplify_class_var_add(CODE **c)
+{ int x, y, k; char* arg1, *arg2;
+  if( is_aload(*c, &x) &&
+      is_getfield(next(*c), &arg1) &&
+      is_ldc_int(next(next(*c)), &k) &&
+      is_iadd(next(next(next(*c)))) || &&
+      is_aload(next(next(next(next(*c)))), &y) &&
+      is_swap(next(next(next(next(next(*c)))))) &&
+      is_putfield(next(next(next(next(next(next(*c)))))), &arg2)
+    ) {
+    return replace(c, 7, makeCODEaload(y, makeCODEaload(x, makeCODEgetfield(arg1, makeCODEldc_int(k, makeCODEiadd(makeCODEputfield(arg2, NULL)))))));
+  }
+  return 0;
+}
+
+/*
+  dup
+  aload x
+  swap
+  putfield arg
+  pop
+  --------->
+  aload x
+  swap
+  putfield arg
+*/
+
+int simplify_assign_class_var(CODE **c)
+{ int x; char *arg;
+  if (is_dup(*c) && is_aload(next(*c), &x) && is_swap(next(next(*c))) &&
+      is_putfield(next(next(next(*c))), &arg) && is_pop(next(next(next(next(*c)))))) {
+    return replace(c, 5, makeCODEaload(x, makeCODEswap(makeCODEputfield(arg, NULL))));
+  }
+  return 0;
+}
+
+/*
+  astore x
+  aload x
+  -------->
+  dup
+  astore x
+*/
+
+int simplify_astore_aload(CODE **c)
+{ int x, y;
+  if (is_astore(*c, &x) && is_aload(next(*c), &y) && x == y) {
+    return replace(c, 2, makeCODEdup(makeCODEastore(x, NULL)));
+  }
+  return 0;
+}
+
+/* 
+  A:                   B:
+
+  dup                  dup
+  istore x             istore x
+  pop                  pop
+  iload x              ----------->
+  --------->           istore
+  dup 
+  istore x
+*/
+
+int simplify_istore(CODE **c)
+{ int x, y;
+  if (is_dup(*c) &&
+      is_istore(next(*c),&x) &&
+      is_pop(next(next(*c)))) {
+    if ( is_iload(next(next(next(*c))), &y) && x== y) {
+      return replace(c, 4, makeCODEdup(makeCODEistore(x, NULL))); /*case A*/
+    } else {
+     return replace(c,3,makeCODEistore(x,NULL)); /*case B*/
+   }
+  }
+  return 0;
+}
+
+/*
+
+  iconst_0
+  istore 4
+  iconst_0
+  ------->
+  iconst_0
+  dup
+  istore 4
+*/
+int simplify_iconst_istore_iconst(CODE **c)
+{ int x, y, k;
+  if (is_ldc_int(*c, &x) && is_istore(next(*c), &y) && is_ldc_int(next(next(*c)), &k) && x == k) {
+    return replace(c, 3, makeCODEldc_int(k, makeCODEdup(makeCODEistore(y, NULL))));
+  }
+  return 0;
+}
 
 /* 
 
@@ -74,6 +185,21 @@ int simplify_duplicate_class_variables(CODE **c)
 
 }
 
+/* aload x
+   aload x
+   -------->
+   aload x
+   dup
+*/
+
+int simplify_aload_aload(CODE **c)
+{ int x, y;
+  if (is_aload(*c, &x) && is_aload(next(*c), &y) && x == y) {
+    return replace(c, 2, makeCODEaload(x, makeCODEdup(NULL)));
+  }
+  return 0;
+}
+
 /* 
 
    ldc_int 6
@@ -117,18 +243,40 @@ int simplify_multiplication_right(CODE **c)
   return 0;
 }
 
-/* dup
- * astore x
- * pop
- * -------->
- * astore x
+/* iload x
+   ldc 1
+   idiv
+   ------->
+   iload x
+*/
+
+int simplify_division(CODE **c)
+{ int x, k;
+  if (is_iload(*c, &x) && is_ldc_int(next(*c), &k) && is_idiv(next(next(*c)))
+      && k == 1) {
+    return replace(c, 3, makeCODEiload(x, NULL));
+  }
+  return 0;
+}
+
+/* dup              dup
+ * astore x         astore x
+ * pop              pop
+ * -------->        aload x
+ * astore x         ---------->
+                    dup
+                    astore x
  */
 int simplify_astore(CODE **c)
-{ int x;
+{ int x, y;
   if (is_dup(*c) &&
       is_astore(next(*c),&x) &&
       is_pop(next(next(*c)))) {
+    if (is_aload(next(next(next(*c))), &y) && x==y) {
+      return replace(c, 4, makeCODEdup(makeCODEastore(x, NULL)));
+    } else {
      return replace(c,3,makeCODEastore(x,NULL));
+   }
   }
   return 0;
 }
@@ -152,6 +300,7 @@ int positive_increment(CODE **c)
   return 0;
 }
 
+
 /* goto L1
  * ...
  * L1:
@@ -172,6 +321,14 @@ int simplify_goto_goto(CODE **c)
      droplabel(l1);
      copylabel(l2);
      return replace(c,1,makeCODEgoto(l2,NULL));
+  }
+  return 0;
+}
+
+int simplify_deadlabel(CODE **c) 
+{ int l;
+  if (is_label(*c, &l) && deadlabel(l)) {
+    return replace(c, 1, NULL);
   }
   return 0;
 }
@@ -202,5 +359,13 @@ int init_patterns()
   ADD_PATTERN(simplify_duplicate_variables);
   ADD_PATTERN(simplify_duplicate_class_variables);
   ADD_PATTERN(simplify_add_zero);
+  ADD_PATTERN(simplify_istore);
+  ADD_PATTERN(simplify_astore_aload);
+  ADD_PATTERN(simplify_deadlabel);
+  ADD_PATTERN(simplify_division);
+  ADD_PATTERN(simplify_assign_class_var);
+  ADD_PATTERN(simplify_aload_aload);
+  ADD_PATTERN(simplify_iconst_istore_iconst);
+  ADD_PATTERN(simplify_class_var_add);
 	return 1;
 }
