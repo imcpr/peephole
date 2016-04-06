@@ -52,6 +52,28 @@ int simplify_duplicate_variables(CODE **c)
   return 0;
 }
 
+/*
+   aload%1
+   getfield %2 I
+   aload%1
+   getfield %2 I
+   =
+   aload%1
+   getfield %2 I
+   dup
+*/
+
+int simplify_duplicate_class_variables(CODE **c)
+{ int x, y; char *arg1, *arg2;
+  if (is_aload(*c, &x) && is_getfield(next(*c), &arg1) &&
+      is_aload(next(next(*c)), &y) && is_getfield(next(next(next(*c))), &arg2) &&
+      x == y && strcmp(arg1, arg2) == 0) {
+    return replace(c, 4, makeCODEaload(x, makeCODEgetfield(arg1, makeCODEdup(NULL))));
+  }
+  return 0;
+
+}
+
 /* 
 
    ldc_int 6
@@ -178,6 +200,7 @@ int init_patterns()
 	ADD_PATTERN(simplify_goto_goto);
 	ADD_PATTERN(simplify_duplicate_intconstants);
   ADD_PATTERN(simplify_duplicate_variables);
+  ADD_PATTERN(simplify_duplicate_class_variables);
   ADD_PATTERN(simplify_add_zero);
 	return 1;
 }
