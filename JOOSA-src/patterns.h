@@ -10,6 +10,41 @@
  * email: hendren@cs.mcgill.ca, mis@brics.dk
  */
 
+ /*
+  ifeq true_1                         0
+  iconst_0                 x
+  goto stop_2
+  true_1:
+  iconst_1             y
+  stop_2:
+  ifeq stop_0
+  ------------->
+  ifeq new
+  goto stop_0
+  new:
+*/
+int simplify_cryptic_labels(CODE **c)
+{
+  int x, y;
+  int t1, s2, s0;
+  int l;
+  if(is_ifeq(*c, &t1) &&
+     is_ldc_int(next(*c), &x) &&
+     is_goto(next(next(*c)), &s2) &&
+     is_label(next(next(next(*c))), &t1) &&
+     is_ldc_int(next(next(next(next(*c)))), &y) &&
+     is_label(next(next(next(next(next(*c))))), &s2) &&
+     is_ifeq(next(next(next(next(next(next(*c)))))), &s0) && x == 0 && y == 1
+     ) {
+    droplabel(t1);
+    droplabel(s2);
+    l = next_label();
+    INSERTnewlabel(l, "uncryptic", next(next(next(next(next(next(next(*c))))))), 1);
+    return replace(c, 7, makeCODEifeq(l, makeCODEgoto(s0, makeCODElabel(l, NULL))));
+  }
+  return 0;
+}
+
 /*
   iconst_0
   aload_0
@@ -20,10 +55,27 @@
   iconst_0
   putfield Test/x I
 */
-int simplify_class_var_swap(CODE **c)
+int simplify_class_var_swap_int(CODE **c)
 { int x, y; char* arg;
   if (is_ldc_int(*c, &x) && is_aload(next(*c), &y) && is_swap(next(next(*c))) && is_putfield(next(next(next(*c))), &arg)) {
     return replace(c, 4, makeCODEaload(y, makeCODEldc_int(x, makeCODEputfield(arg, NULL))));
+  }
+  return 0;
+}
+/*
+  ldc arg1
+  aload x
+  swap
+  putfield arg2
+  ------>
+  aload x
+  ldc arg1
+  putfield arg2
+*/
+int simplify_class_var_swap_string(CODE **c)
+{ int x; char* arg1, *arg2;
+  if (is_ldc_string(*c, &arg1) && is_aload(next(*c), &x) && is_swap(next(next(*c))) && is_putfield(next(next(next(*c))), &arg2)) {
+    return replace(c, 4, makeCODEaload(x, makeCODEldc_string(arg1, makeCODEputfield(arg2, NULL))));
   }
   return 0;
 }
@@ -48,17 +100,70 @@ int simplify_class_var_add(CODE **c)
 { int x, y, k; char* arg1, *arg2;
   if( is_aload(*c, &x) &&
       is_getfield(next(*c), &arg1) &&
-      is_ldc_int(next(next(*c)), &k) &&
       is_iadd(next(next(next(*c)))) &&
       is_aload(next(next(next(next(*c)))), &y) &&
       is_swap(next(next(next(next(next(*c)))))) &&
       is_putfield(next(next(next(next(next(next(*c)))))), &arg2)
     ) {
+    if (is_ldc_int(next(next(*c)), &k))
     return replace(c, 7, makeCODEaload(y, makeCODEaload(x, makeCODEgetfield(arg1, makeCODEldc_int(k, makeCODEiadd(makeCODEputfield(arg2, NULL)))))));
+    else if (is_iload(next(next(*c)), &k))
+    return replace(c, 7, makeCODEaload(y, makeCODEaload(x, makeCODEgetfield(arg1, makeCODEiload(k, makeCODEiadd(makeCODEputfield(arg2, NULL)))))));
+ 
   }
   return 0;
 }
-
+int simplify_class_var_sub(CODE **c)
+{ int x, y, k; char* arg1, *arg2;
+  if( is_aload(*c, &x) &&
+      is_getfield(next(*c), &arg1) &&
+      is_isub(next(next(next(*c)))) &&
+      is_aload(next(next(next(next(*c)))), &y) &&
+      is_swap(next(next(next(next(next(*c)))))) &&
+      is_putfield(next(next(next(next(next(next(*c)))))), &arg2)
+    ) {
+    if (is_ldc_int(next(next(*c)), &k))
+    return replace(c, 7, makeCODEaload(y, makeCODEaload(x, makeCODEgetfield(arg1, makeCODEldc_int(k, makeCODEisub(makeCODEputfield(arg2, NULL)))))));
+    else if (is_iload(next(next(*c)), &k))
+    return replace(c, 7, makeCODEaload(y, makeCODEaload(x, makeCODEgetfield(arg1, makeCODEiload(k, makeCODEisub(makeCODEputfield(arg2, NULL)))))));
+ 
+  }
+  return 0;
+}
+int simplify_class_var_mul(CODE **c)
+{ int x, y, k; char* arg1, *arg2;
+  if( is_aload(*c, &x) &&
+      is_getfield(next(*c), &arg1) &&
+      is_imul(next(next(next(*c)))) &&
+      is_aload(next(next(next(next(*c)))), &y) &&
+      is_swap(next(next(next(next(next(*c)))))) &&
+      is_putfield(next(next(next(next(next(next(*c)))))), &arg2)
+    ) {
+    if (is_ldc_int(next(next(*c)), &k))
+    return replace(c, 7, makeCODEaload(y, makeCODEaload(x, makeCODEgetfield(arg1, makeCODEldc_int(k, makeCODEimul(makeCODEputfield(arg2, NULL)))))));
+    else if (is_iload(next(next(*c)), &k))
+    return replace(c, 7, makeCODEaload(y, makeCODEaload(x, makeCODEgetfield(arg1, makeCODEiload(k, makeCODEimul(makeCODEputfield(arg2, NULL)))))));
+ 
+  }
+  return 0;
+}
+int simplify_class_var_div(CODE **c)
+{ int x, y, k; char* arg1, *arg2;
+  if( is_aload(*c, &x) &&
+      is_getfield(next(*c), &arg1) &&
+      is_idiv(next(next(next(*c)))) &&
+      is_aload(next(next(next(next(*c)))), &y) &&
+      is_swap(next(next(next(next(next(*c)))))) &&
+      is_putfield(next(next(next(next(next(next(*c)))))), &arg2)
+    ) {
+    if (is_ldc_int(next(next(*c)), &k))
+    return replace(c, 7, makeCODEaload(y, makeCODEaload(x, makeCODEgetfield(arg1, makeCODEldc_int(k, makeCODEidiv(makeCODEputfield(arg2, NULL)))))));
+    else if (is_iload(next(next(*c)), &k))
+    return replace(c, 7, makeCODEaload(y, makeCODEaload(x, makeCODEgetfield(arg1, makeCODEiload(k, makeCODEidiv(makeCODEputfield(arg2, NULL)))))));
+ 
+  }
+  return 0;
+}
 /*
   dup
   aload x
@@ -440,7 +545,12 @@ int init_patterns()
   ADD_PATTERN(simplify_aload_aload);
   ADD_PATTERN(simplify_iconst_istore_iconst);
   ADD_PATTERN(simplify_class_var_add);
-  ADD_PATTERN(simplify_class_var_swap);
+  ADD_PATTERN(simplify_class_var_mul);
+  ADD_PATTERN(simplify_class_var_div);
+  ADD_PATTERN(simplify_class_var_sub);
+  ADD_PATTERN(simplify_class_var_swap_int);
+  ADD_PATTERN(simplify_class_var_swap_string);
+  ADD_PATTERN(simplify_cryptic_labels);
 	return 1;
 }
 
