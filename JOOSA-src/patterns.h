@@ -13,6 +13,29 @@
 
 /* 
 
+   iload 4           aload 4
+   iload 4           aload 4
+   --------->        -------->
+   iload 4           aload 4
+   dup               dup
+
+   src: https://frippery.org/jopt/opt4.html
+   only optimize when local index > 3 because i(a)load_3/2/1 is faster
+*/
+int simplify_duplicate_variables(CODE **c)
+{ int x, y; 
+  if (is_iload(*c, &x) &&
+      is_iload(next(*c), &y) && x == y && x > 3) {
+    return replace(c, 2,makeCODEiload(x, makeCODEdup(NULL)));
+  } else if (is_aload(*c, &x) &&
+      is_aload(next(*c), &y) && x == y && x > 3) {
+    return replace(c, 2,makeCODEaload(x, makeCODEdup(NULL)));
+  }
+  return 0;
+}
+
+/* 
+
    ldc_int 6
    ldc_int 6
    --------->
@@ -130,11 +153,12 @@ OPTI optimization[OPTS] = {simplify_multiplication_right,
 */
 
 int init_patterns()
-{ 	
+{
 	ADD_PATTERN(simplify_multiplication_right);
 	ADD_PATTERN(simplify_astore);
 	ADD_PATTERN(positive_increment);
 	ADD_PATTERN(simplify_goto_goto);
 	ADD_PATTERN(simplify_duplicate_intconstants);
+  ADD_PATTERN(simplify_duplicate_variables);
 	return 1;
 }
