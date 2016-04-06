@@ -10,6 +10,23 @@
  * email: hendren@cs.mcgill.ca, mis@brics.dk
  */
 
+/*
+  iconst_0
+  aload_0
+  swap
+  putfield Test/x I
+  ------>
+  aload_0
+  iconst_0
+  putfield Test/x I
+*/
+int simplify_class_var_swap(CODE **c)
+{ int x, y; char* arg;
+  if (is_ldc_int(*c, &x) && is_aload(next(*c), &y) && is_swap(next(next(*c))) && is_putfield(next(next(next(*c))), &arg)) {
+    return replace(c, 4, makeCODEaload(y, makeCODEldc_int(x, makeCODEputfield(arg, NULL))));
+  }
+  return 0;
+}
 
 /*
   aload_0
@@ -32,7 +49,7 @@ int simplify_class_var_add(CODE **c)
   if( is_aload(*c, &x) &&
       is_getfield(next(*c), &arg1) &&
       is_ldc_int(next(next(*c)), &k) &&
-      is_iadd(next(next(next(*c)))) || &&
+      is_iadd(next(next(next(*c)))) &&
       is_aload(next(next(next(next(*c)))), &y) &&
       is_swap(next(next(next(next(next(*c)))))) &&
       is_putfield(next(next(next(next(next(next(*c)))))), &arg2)
@@ -423,6 +440,7 @@ int init_patterns()
   ADD_PATTERN(simplify_aload_aload);
   ADD_PATTERN(simplify_iconst_istore_iconst);
   ADD_PATTERN(simplify_class_var_add);
+  ADD_PATTERN(simplify_class_var_swap);
 	return 1;
 }
 
