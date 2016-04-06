@@ -27,10 +27,17 @@ Binary file PeepholeBenchmarks/bench02/StringEscapeUtils.optdump matches
 PeepholeBenchmarks/bench03/Conversion.optdump:;         code_length 1722
 PeepholeBenchmarks/bench03/Conversion.optdump:;         code_length 19
 PeepholeBenchmarks/bench03/Conversion.optdump:;         code_length 26
+<<<<<<< HEAD
 PeepholeBenchmarks/bench03/Decoder.optdump:;         code_length 29
 PeepholeBenchmarks/bench03/Decoder.optdump:;         code_length 678
 PeepholeBenchmarks/bench03/Encoder.optdump:;         code_length 29
 PeepholeBenchmarks/bench03/Encoder.optdump:;         code_length 629
+=======
+PeepholeBenchmarks/bench03/Decoder.optdump:;         code_length 33
+PeepholeBenchmarks/bench03/Decoder.optdump:;         code_length 725
+PeepholeBenchmarks/bench03/Encoder.optdump:;         code_length 33
+PeepholeBenchmarks/bench03/Encoder.optdump:;         code_length 661
+>>>>>>> 057d296dbd54d469b068036b8dcb177c2b67124c
 PeepholeBenchmarks/bench03/Main.optdump:;         code_length 5
 PeepholeBenchmarks/bench03/Main.optdump:;         code_length 71
 PeepholeBenchmarks/bench04/Board.optdump:;         code_length 134
@@ -90,39 +97,65 @@ PeepholeBenchmarks/bench04/KillRowMove.optdump:;         code_length 37
 PeepholeBenchmarks/bench04/KillRowMove.optdump:;         code_length 4
 PeepholeBenchmarks/bench04/Move.optdump:;         code_length 5
 PeepholeBenchmarks/bench04/Strategy.optdump:;         code_length 5
+<<<<<<< HEAD
 PeepholeBenchmarks/bench05/CustomPoint.optdump:;         code_length 17
 PeepholeBenchmarks/bench05/CustomPoint.optdump:;         code_length 17
+=======
+PeepholeBenchmarks/bench05/CustomPoint.optdump:;         code_length 21
+PeepholeBenchmarks/bench05/CustomPoint.optdump:;         code_length 21
+>>>>>>> 057d296dbd54d469b068036b8dcb177c2b67124c
 PeepholeBenchmarks/bench05/CustomPoint.optdump:;         code_length 6
 PeepholeBenchmarks/bench05/CustomPoint.optdump:;         code_length 6
 PeepholeBenchmarks/bench05/DungeonGenerator.optdump:;         code_length 5
 PeepholeBenchmarks/bench05/DungeonGenerator.optdump:;         code_length 34
 PeepholeBenchmarks/bench05/DungeonInfos.optdump:;         code_length 9
+<<<<<<< HEAD
 PeepholeBenchmarks/bench05/DungeonInfos.optdump:;         code_length 73
 PeepholeBenchmarks/bench05/DungeonInfos.optdump:;         code_length 231
+=======
+PeepholeBenchmarks/bench05/DungeonInfos.optdump:;         code_length 85
+PeepholeBenchmarks/bench05/DungeonInfos.optdump:;         code_length 237
+>>>>>>> 057d296dbd54d469b068036b8dcb177c2b67124c
 PeepholeBenchmarks/bench05/DungeonInfos.optdump:;         code_length 6
 PeepholeBenchmarks/bench05/DungeonInfos.optdump:;         code_length 6
 PeepholeBenchmarks/bench05/DungeonInfos.optdump:;         code_length 6
 PeepholeBenchmarks/bench05/DungeonInfos.optdump:;         code_length 6
 PeepholeBenchmarks/bench05/DungeonInfos.optdump:;         code_length 6
 PeepholeBenchmarks/bench05/DungeonInfos.optdump:;         code_length 6
+<<<<<<< HEAD
 PeepholeBenchmarks/bench05/Dungeon.optdump:;         code_length 23
 PeepholeBenchmarks/bench05/Dungeon.optdump:;         code_length 370
 PeepholeBenchmarks/bench05/Dungeon.optdump:;         code_length 326
+=======
+PeepholeBenchmarks/bench05/Dungeon.optdump:;         code_length 27
+PeepholeBenchmarks/bench05/Dungeon.optdump:;         code_length 384
+PeepholeBenchmarks/bench05/Dungeon.optdump:;         code_length 330
+>>>>>>> 057d296dbd54d469b068036b8dcb177c2b67124c
 PeepholeBenchmarks/bench05/Dungeon.optdump:;         code_length 25
 PeepholeBenchmarks/bench06/AmazingCalculator.optdump:;         code_length 5
 PeepholeBenchmarks/bench06/AmazingCalculator.optdump:;         code_length 29
 PeepholeBenchmarks/bench06/AmazingCalculator.optdump:;         code_length 1
+<<<<<<< HEAD
 PeepholeBenchmarks/bench06/ComplementsGenerator.optdump:;         code_length 18
 PeepholeBenchmarks/bench06/ComplementsGenerator.optdump:;         code_length 1573
 PeepholeBenchmarks/bench06/ComplementsGenerator.optdump:;         code_length 6
 PeepholeBenchmarks/bench06/ComplementsGenerator.optdump:;         code_length 212
 PeepholeBenchmarks/bench06/ComplementsGenerator.optdump:;         code_length 192
 PeepholeBenchmarks/bench06/ComplementsGenerator.optdump:;         code_length 212
+=======
+PeepholeBenchmarks/bench06/ComplementsGenerator.optdump:;         code_length 20
+PeepholeBenchmarks/bench06/ComplementsGenerator.optdump:;         code_length 1583
+PeepholeBenchmarks/bench06/ComplementsGenerator.optdump:;         code_length 6
+PeepholeBenchmarks/bench06/ComplementsGenerator.optdump:;         code_length 218
+PeepholeBenchmarks/bench06/ComplementsGenerator.optdump:;         code_length 198
+PeepholeBenchmarks/bench06/ComplementsGenerator.optdump:;         code_length 218
+>>>>>>> 057d296dbd54d469b068036b8dcb177c2b67124c
 PeepholeBenchmarks/bench06/FemaleBoss.optdump:;         code_length 5
 PeepholeBenchmarks/bench06/FemaleBoss.optdump:;         code_length 498
 PeepholeBenchmarks/bench06/GirlFriend.optdump:;         code_length 5
 PeepholeBenchmarks/bench06/GirlFriend.optdump:;         code_length 980
 PeepholeBenchmarks/bench06/Main.optdump:;         code_length 5
+<<<<<<< HEAD
 PeepholeBenchmarks/bench06/Main.optdump:;         code_length 511
 PeepholeBenchmarks/bench06/Woman.optdump:;         code_length 5
 PeepholeBenchmarks/bench06/Woman.optdump:;         code_length 7
@@ -132,6 +165,17 @@ PeepholeBenchmarks/bench07/BFRoomAction.optdump:;         code_length 124
 PeepholeBenchmarks/bench07/CoinRoomAction.optdump:;         code_length 11
 PeepholeBenchmarks/bench07/CoinRoomAction.optdump:;         code_length 37
 PeepholeBenchmarks/bench07/CoinRoomAction.optdump:;         code_length 238
+=======
+PeepholeBenchmarks/bench06/Main.optdump:;         code_length 521
+PeepholeBenchmarks/bench06/Woman.optdump:;         code_length 5
+PeepholeBenchmarks/bench06/Woman.optdump:;         code_length 9
+PeepholeBenchmarks/bench07/BFRoomAction.optdump:;         code_length 5
+PeepholeBenchmarks/bench07/BFRoomAction.optdump:;         code_length 10
+PeepholeBenchmarks/bench07/BFRoomAction.optdump:;         code_length 124
+PeepholeBenchmarks/bench07/CoinRoomAction.optdump:;         code_length 13
+PeepholeBenchmarks/bench07/CoinRoomAction.optdump:;         code_length 37
+PeepholeBenchmarks/bench07/CoinRoomAction.optdump:;         code_length 240
+>>>>>>> 057d296dbd54d469b068036b8dcb177c2b67124c
 PeepholeBenchmarks/bench07/EmptyRoomAction.optdump:;         code_length 5
 PeepholeBenchmarks/bench07/EmptyRoomAction.optdump:;         code_length 10
 PeepholeBenchmarks/bench07/EmptyRoomAction.optdump:;         code_length 7
@@ -140,6 +184,7 @@ PeepholeBenchmarks/bench07/ExitRoomAction.optdump:;         code_length 10
 PeepholeBenchmarks/bench07/ExitRoomAction.optdump:;         code_length 83
 PeepholeBenchmarks/bench07/FactorialRoomAction.optdump:;         code_length 5
 PeepholeBenchmarks/bench07/FactorialRoomAction.optdump:;         code_length 10
+<<<<<<< HEAD
 PeepholeBenchmarks/bench07/FactorialRoomAction.optdump:;         code_length 256
 PeepholeBenchmarks/bench07/FactorialRoomAction.optdump:;         code_length 44
 PeepholeBenchmarks/bench07/FeastRoomAction.optdump:;         code_length 5
@@ -166,6 +211,34 @@ PeepholeBenchmarks/bench07/RoomAction.optdump:;         code_length 162
 PeepholeBenchmarks/bench07/RoomAction.optdump:;         code_length 29
 PeepholeBenchmarks/bench07/Room.optdump:;         code_length 610
 PeepholeBenchmarks/bench07/Room.optdump:;         code_length 34
+=======
+PeepholeBenchmarks/bench07/FactorialRoomAction.optdump:;         code_length 260
+PeepholeBenchmarks/bench07/FactorialRoomAction.optdump:;         code_length 44
+PeepholeBenchmarks/bench07/FeastRoomAction.optdump:;         code_length 5
+PeepholeBenchmarks/bench07/FeastRoomAction.optdump:;         code_length 10
+PeepholeBenchmarks/bench07/FeastRoomAction.optdump:;         code_length 203
+PeepholeBenchmarks/bench07/GrueHunt.optdump:;         code_length 5
+PeepholeBenchmarks/bench07/GrueHunt.optdump:;         code_length 22
+PeepholeBenchmarks/bench07/GrueHunt.optdump:;         code_length 1601
+PeepholeBenchmarks/bench07/GrueRoomAction.optdump:;         code_length 5
+PeepholeBenchmarks/bench07/GrueRoomAction.optdump:;         code_length 133
+PeepholeBenchmarks/bench07/HuntRoomAction.optdump:;         code_length 130
+PeepholeBenchmarks/bench07/HuntRoomAction.optdump:;         code_length 141
+PeepholeBenchmarks/bench07/HuntRoomAction.optdump:;         code_length 788
+PeepholeBenchmarks/bench07/InGenerate.optdump:;         code_length 19
+PeepholeBenchmarks/bench07/InGenerate.optdump:;         code_length 257
+PeepholeBenchmarks/bench07/InGenerate.optdump:;         code_length 33
+PeepholeBenchmarks/bench07/JokeRoomAction.optdump:;         code_length 5
+PeepholeBenchmarks/bench07/JokeRoomAction.optdump:;         code_length 10
+PeepholeBenchmarks/bench07/JokeRoomAction.optdump:;         code_length 178
+PeepholeBenchmarks/bench07/JokeRoomAction.optdump:;         code_length 314
+PeepholeBenchmarks/bench07/RoomAction.optdump:;         code_length 33
+PeepholeBenchmarks/bench07/RoomAction.optdump:;         code_length 10
+PeepholeBenchmarks/bench07/RoomAction.optdump:;         code_length 162
+PeepholeBenchmarks/bench07/RoomAction.optdump:;         code_length 33
+PeepholeBenchmarks/bench07/Room.optdump:;         code_length 683
+PeepholeBenchmarks/bench07/Room.optdump:;         code_length 36
+>>>>>>> 057d296dbd54d469b068036b8dcb177c2b67124c
 PeepholeBenchmarks/bench07/Room.optdump:;         code_length 12
 PeepholeBenchmarks/bench07/Room.optdump:;         code_length 6
 PeepholeBenchmarks/bench07/Room.optdump:;         code_length 6
@@ -174,6 +247,7 @@ PeepholeBenchmarks/bench07/Room.optdump:;         code_length 6
 PeepholeBenchmarks/bench07/Room.optdump:;         code_length 6
 PeepholeBenchmarks/bench07/Room.optdump:;         code_length 139
 PeepholeBenchmarks/bench07/Room.optdump:;         code_length 258
+<<<<<<< HEAD
 PeepholeBenchmarks/bench07/TreasureRoomAction.optdump:;         code_length 11
 PeepholeBenchmarks/bench07/TreasureRoomAction.optdump:;         code_length 37
 PeepholeBenchmarks/bench07/TreasureRoomAction.optdump:;         code_length 151
@@ -185,3 +259,8 @@ PeepholeBenchmarks/bench07/TreasureRoomAction.optdump:;         code_length 151
 ;         code_length 13
 ;         code_length 69
 ;         code_length 56
+=======
+PeepholeBenchmarks/bench07/TreasureRoomAction.optdump:;         code_length 13
+PeepholeBenchmarks/bench07/TreasureRoomAction.optdump:;         code_length 37
+PeepholeBenchmarks/bench07/TreasureRoomAction.optdump:;         code_length 153
+>>>>>>> 057d296dbd54d469b068036b8dcb177c2b67124c
