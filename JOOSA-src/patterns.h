@@ -11,6 +11,24 @@
  */
 
 
+
+/* 
+
+   ldc_int 0
+   iadd
+   --------->
+
+   src: https://frippery.org/jopt/opt2.html
+*/
+
+int simplify_add_zero(CODE **c)
+{ int x;
+  if (is_ldc_int(*c, &x) && is_iadd(next(*c)) && x == 0) {
+    return replace(c, 2, NULL);
+  }
+  return 0;
+}
+
 /* 
 
    iload 4           aload 4
@@ -160,5 +178,6 @@ int init_patterns()
 	ADD_PATTERN(simplify_goto_goto);
 	ADD_PATTERN(simplify_duplicate_intconstants);
   ADD_PATTERN(simplify_duplicate_variables);
+  ADD_PATTERN(simplify_add_zero);
 	return 1;
 }
