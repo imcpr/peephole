@@ -10,6 +10,28 @@
  * email: hendren@cs.mcgill.ca, mis@brics.dk
  */
 
+
+/*
+
+  ifnull null_8
+  goto stop_9
+  null_8:
+  ------>
+  ifnonnull stop_9
+*/
+int simplify_cryptic_null_ifs(CODE **c)
+{ int n8, s9, vn8;
+  if (is_ifnull(*c, &n8) && is_goto(next(*c), &s9) && is_label(next(next(*c)), &vn8) && n8 == vn8) {
+    droplabel(n8);
+    if (deadlabel(n8)) {
+      return replace(c, 3, makeCODEifnonnull(s9, NULL));
+    } else {
+      return replace(c, 3, makeCODElabel(n8, makeCODEifnonnull(s9, NULL)));
+    }
+  }
+  return 0;
+}
+
  /*
   ifeq true_1                         0
   iconst_0                 x
@@ -551,6 +573,7 @@ int init_patterns()
   ADD_PATTERN(simplify_class_var_swap_int);
   ADD_PATTERN(simplify_class_var_swap_string);
   ADD_PATTERN(simplify_cryptic_labels);
+  ADD_PATTERN(simplify_cryptic_null_ifs);
 	return 1;
 }
 
