@@ -12,6 +12,68 @@
 
 /* 
 
+   ldc_int 0
+   iadd
+   --------->
+
+   src: https://frippery.org/jopt/opt2.html
+*/
+
+int simplify_add_zero(CODE **c)
+{ int x;
+  if (is_ldc_int(*c, &x) && is_iadd(next(*c)) && x == 0) {
+    return replace(c, 2, NULL);
+  }
+  return 0;
+}
+
+/* 
+
+   iload 4           aload 4
+   iload 4           aload 4
+   --------->        -------->
+   iload 4           aload 4
+   dup               dup
+
+   src: https://frippery.org/jopt/opt4.html
+   only optimize when local index > 3 because i(a)load_3/2/1 is faster
+*/
+int simplify_duplicate_variables(CODE **c)
+{ int x, y; 
+  if (is_iload(*c, &x) &&
+      is_iload(next(*c), &y) && x == y && x > 3) {
+    return replace(c, 2,makeCODEiload(x, makeCODEdup(NULL)));
+  } else if (is_aload(*c, &x) &&
+      is_aload(next(*c), &y) && x == y && x > 3) {
+    return replace(c, 2,makeCODEaload(x, makeCODEdup(NULL)));
+  }
+  return 0;
+}
+
+/*
+   aload%1
+   getfield %2 I
+   aload%1
+   getfield %2 I
+   =
+   aload%1
+   getfield %2 I
+   dup
+*/
+
+int simplify_duplicate_class_variables(CODE **c)
+{ int x, y; char *arg1, *arg2;
+  if (is_aload(*c, &x) && is_getfield(next(*c), &arg1) &&
+      is_aload(next(next(*c)), &y) && is_getfield(next(next(next(*c))), &arg2) &&
+      x == y && strcmp(arg1, arg2) == 0) {
+    return replace(c, 4, makeCODEaload(x, makeCODEgetfield(arg1, makeCODEdup(NULL))));
+  }
+  return 0;
+
+}
+
+/* 
+
    ldc_int 6
    ldc_int 6
    --------->
@@ -182,15 +244,18 @@ int simplify_equals_true_field(CODE **c)
 }
 
 int init_patterns()
-{ 	
+{
 	ADD_PATTERN(simplify_multiplication_right);
 	ADD_PATTERN(simplify_astore);
 	ADD_PATTERN(positive_increment);
 	ADD_PATTERN(simplify_goto_goto);
 	ADD_PATTERN(simplify_duplicate_intconstants);
 	ADD_PATTERN(simplify_pop_after_load);
-	ADD_PATTERN(simplify_nop);
-	ADD_PATTERN(simplify_equals_true_field);
+	/*ADD_PATTERN(simplify_nop);*/
+	/*ADD_PATTERN(simplify_equals_true_field);*/
+  ADD_PATTERN(simplify_duplicate_variables);
+  ADD_PATTERN(simplify_duplicate_class_variables);
+  ADD_PATTERN(simplify_add_zero);
 	return 1;
 }
 

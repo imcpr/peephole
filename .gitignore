@@ -5,3 +5,7 @@
 *.optdump
 *.dump
 *.swp
+*/*/*.class
+*/*/*.j
+*/*/*.dump
+*/*/*.optdump
