@@ -42,14 +42,39 @@ fi
 rm output1
 cd ../../
 
+#test b3
+cd PeepholeBenchmarks/bench03/
+cd lib
+javac JoosBitwise.java
+cd ..
+java Main < in1 > output1
+if ! cmp out1 output1 >/dev/null 2>&1
+then
+  echo "BENCHMARK 03 OUTPUT FAILS"
+fi
+rm output1
+cd ../../
+
 #test b4
 cd PeepholeBenchmarks/bench04/
+
+#case in1
 java Game < in1 > output1
 if ! cmp out1 output1 >/dev/null 2>&1
 then
   echo "BENCHMARK 04 OUTPUT FAILS"
 fi
 rm output1
+
+#case in 
+# yeah, doesn't work. I bet it's a problem in the input. since neither with non-opt it doen't work
+#java Game < in > output
+#if ! cmp out output >/dev/null 2>&1
+#then
+#  echo "BENCHMARK 04 OUTPUT FAILS"
+#fi
+#rm output
+#
 cd ../../
 
 #test b5
@@ -73,14 +98,14 @@ rm output1
 cd ../../
 
 #test b7 doesn't seem deterministic...
-#cd PeepholeBenchmarks/bench07/
-#java GrueHunt < in1 > output1
+cd PeepholeBenchmarks/bench07/
+java GrueHunt < in1 > output1
 #if ! cmp out1 output1 >/dev/null 2>&1
 #then
 #  echo "BENCHMARK 07 OUTPUT FAILS"
 #fi
-#rm output1
-#cd ../../
+rm output1
+cd ../../
 
 
 if [[ $1 == "-O" ]]; then
