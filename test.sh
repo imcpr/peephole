@@ -6,6 +6,8 @@
 # exporting variable envirionment 
 #export PEEPDIR=~/2016-mcgill1/comp520/assignments/peephole/peephole/
 
+make -C JOOSA-src/
+
 if [[ $1 == "-O" ]]; then
 	rm -f opt.size
 else

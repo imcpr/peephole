@@ -1,4 +1,6 @@
 *.o
+*/*.o
+JOOSA-src/*.o
 *~
 *.class
 *.j

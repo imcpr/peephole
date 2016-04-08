@@ -23,7 +23,9 @@ PeepholeBenchmarks/bench02/Interpretor.optdump:;         code_length 42
 PeepholeBenchmarks/bench02/Interpretor.optdump:;         code_length 21
 PeepholeBenchmarks/bench02/Main.optdump:;         code_length 5
 PeepholeBenchmarks/bench02/Main.optdump:;         code_length 42
-Binary file PeepholeBenchmarks/bench02/StringEscapeUtils.optdump matches
+PeepholeBenchmarks/bench02/StringEscapeUtils.optdump:;         code_length 5
+PeepholeBenchmarks/bench02/StringEscapeUtils.optdump:;         code_length 43
+PeepholeBenchmarks/bench02/StringEscapeUtils.optdump:;         code_length 88
 PeepholeBenchmarks/bench03/Conversion.optdump:;         code_length 1722
 PeepholeBenchmarks/bench03/Conversion.optdump:;         code_length 19
 PeepholeBenchmarks/bench03/Conversion.optdump:;         code_length 26
